@@ -1,14 +1,16 @@
-class Ball extends Billiardtisch{
-    float col;
+class Ball{
+
     float xSpeed = 3, ySpeed = 3;
     float ballSize;
     float r;
-    float x = random(0,599);
-    float y = random(0,599);
+    float x = (int)(Math.random()*599);
+    float y = (int)(Math.random()*599);
 
-    Billiardtisch tisch = new Billiardtisch();
 
-    Ball(float ballSize){
+    Billiardtisch tisch;
+
+    Ball(Billiardtisch tisch, float ballSize){
+        this.tisch = tisch;
         this.ballSize = ballSize;
         r = ballSize/2;
     }
@@ -40,19 +42,19 @@ class Ball extends Billiardtisch{
     }
 
     void overlaps(Ball ball){
-        float d = dist(x, y, ball.x, ball.y);
+        float d = tisch.dist(x, y, ball.x, ball.y);
         if( d <= r + ball.r+1){
             if(x < ball.x){
-                xSpeed = -abs(xSpeed);
+                xSpeed = -tisch.abs(xSpeed);
             }
             if(x > ball.x+1){
-                xSpeed = abs(xSpeed);
+                xSpeed = tisch.abs(xSpeed);
             }
             if(y < ball.y+1){
-                ySpeed = -abs(ySpeed);
+                ySpeed = -tisch.abs(ySpeed);
             }
             if(y > ball.y+1){
-                ySpeed = abs(ySpeed);
+                ySpeed = tisch.abs(ySpeed);
             }
         }
     }
