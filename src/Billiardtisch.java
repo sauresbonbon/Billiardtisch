@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/**
+ *
+ * */
 public class Billiardtisch extends PApplet {
     public static void main(String[] args) {
         String[] appArgs = {"Billiardtisch"};
@@ -10,14 +12,14 @@ public class Billiardtisch extends PApplet {
     Ball[] balls = new Ball[10];
 
     public void settings() {
-        size(600, 600);
+        size(450, 600);
         for (int i = 0; i < balls.length; i++) {
-            balls[i] = new Ball(this,30);
+            balls[i] = new Ball(this,20);
         }
     }
 
     public void draw() {
-        background(255);
+        background(0x003331);
         for (int i = 0; i < balls.length; i++) {
             balls[i].display();
             balls[i].move();
